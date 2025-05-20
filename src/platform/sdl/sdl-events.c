@@ -90,6 +90,14 @@ bool mSDLInitEvents(struct mSDLEvents* context) {
 #endif
 
 	SDL_JoystickEventState(SDL_ENABLE);
+#if 0
+	// Controller won't work unless 
+	// we wait for them to show up
+	while(SDL_NumJoysticks() == 0)
+	{ 
+		SDL_PumpEvents();
+	}
+#endif
 	int nJoysticks = SDL_NumJoysticks();
 	SDL_JoystickListInit(&context->joysticks, nJoysticks);
 	if (nJoysticks > 0) {

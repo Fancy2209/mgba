@@ -3,6 +3,7 @@
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+#ifndef __lv2ppu__ // threads cause issues on PS3, do not include this file
 #include <mgba/internal/gba/sio/dolphin.h>
 
 #include <mgba/internal/gba/gba.h>
@@ -215,3 +216,4 @@ int32_t _processCommand(struct GBASIODolphin* dol, uint32_t cyclesLate) {
 bool GBASIODolphinIsConnected(struct GBASIODolphin* dol) {
 	return dol->data != INVALID_SOCKET;
 }
+#endif

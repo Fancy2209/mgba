@@ -12,6 +12,9 @@
 #if __has_feature(address_sanitizer)
 #define DISABLE_ANON_MMAP
 #endif
+#ifdef __lv2ppu__
+#define DISABLE_ANON_MMAP
+#endif
 #endif
 #endif
 

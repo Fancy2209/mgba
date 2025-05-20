@@ -205,7 +205,11 @@ bool mArgumentsParse(struct mArguments* args, int argc, char* const* argv, struc
 	} else if (argc == 1) {
 		args->fname = strdup(argv[0]);
 	} else {
+#ifdef __lv2ppu__
+		args->fname = "/dev_hdd0/mGBA/rom.gba";
+#else
 		args->fname = NULL;
+#endif
 	}
 	return true;
 }
@@ -319,7 +323,7 @@ void mSubParserGraphicsInit(struct mSubParser* parser, struct mGraphicsOpts* opt
 	parser->longOptions = _graphicsLongOpts;
 	parser->handleExtraArg = NULL;
 	opts->multiplier = 0;
-	opts->fullscreen = false;
+	opts->fullscreen = true;
 }
 
 bool _parseGraphicsArg(struct mSubParser* parser, int option, const char* arg) {

@@ -72,7 +72,11 @@ endif()
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "${CPACK_DEBIAN_PACKAGE_DEPENDS},libsdl${SDL_VERSION_DEBIAN}" PARENT_SCOPE)
 
 file(GLOB PLATFORM_SRC ${CMAKE_CURRENT_SOURCE_DIR}/sdl-*.c)
+if(PS3)
+set(PLATFORM_LIBRARY EGL GL stdc++ gcm_sys rsx sysutil io audio rt lv2 io audio ${SDL_LIBRARY} EGL GL stdc++ gcm_sys rsx sysutil io audio rt lv2 io audio ${SDLMAIN_LIBRARY} EGL GL stdc++ gcm_sys rsx sysutil io audio rt lv2 io audio ${SDL_LIBRARY} ${PIXMAN-1_LIBRARIES})
+else()
 set(PLATFORM_LIBRARY ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDL_LIBRARY} ${PIXMAN-1_LIBRARIES})
+endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${PIXMAN-1_INCLUDE_DIRS} ${SDL_INCLUDE_DIR})
 
 set(SDL_INCLUDE_DIR "${SDL_INCLUDE_DIR}" PARENT_SCOPE)

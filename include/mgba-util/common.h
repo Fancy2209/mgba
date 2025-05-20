@@ -78,7 +78,7 @@ typedef intptr_t ssize_t;
 typedef intptr_t ssize_t;
 #endif
 
-#ifdef PSP2
+#if defined(PSP2) || defined(__lv2ppu__)
 // For PATH_MAX on modern toolchains
 #include <sys/syslimits.h>
 #endif

@@ -21,6 +21,8 @@ CXX_GUARD_START
 #include <mgba-util/platform/3ds/threading.h>
 #elif defined(__SWITCH__)
 #include <mgba-util/platform/switch/threading.h>
+#elif defined(__lv2ppu__)
+#include <mgba-util/platform/ps3/threading.h>
 #else
 #define DISABLE_THREADING
 #endif
@@ -75,8 +77,9 @@ static inline int MutexUnlock(Mutex* mutex) {
 	return 0;
 }
 
-static inline int ConditionInit(Condition* cond) {
+static inline int ConditionInit(Condition* cond, Mutex* mutex) {
 	UNUSED(cond);
+	UNUSED(mutex);
 	return 0;
 }
 
